@@ -16,6 +16,8 @@ export default class TodosList extends React.Component {
 		return <div style={{ color: "red" }}>{this.state.error}</div>;
 	}
 
+
+	// render -  renders the input box
 	render() {
 		return (
 			<form onSubmit={this.handleCreate.bind(this)}>
@@ -25,13 +27,16 @@ export default class TodosList extends React.Component {
 			</form>
 		);
 	}
+	// render =======================================================================
 
+
+	// handleCreate - this will validate the input and then set the values
 	handleCreate(event) {
 		event.preventDefault();
 
 		const createInput = this.refs.createInput;
 		const task = createInput.value;
-		const validateInput = this.validateInput(task);
+		const validateInput = this.validateInput(task); //calls validateInput
 
 		if (validateInput) {
 			this.setState({ error: validateInput });
@@ -42,7 +47,10 @@ export default class TodosList extends React.Component {
 		this.props.createTask(task);
 		this.refs.createInput.value = "";
 	}
+	// =========================================================================
 
+
+	// validateInput - this will check if there's any doubles or if the input box is empty
 	validateInput(task) {
 		if (!task) {
 			return "Please enter a task.";
@@ -54,4 +62,8 @@ export default class TodosList extends React.Component {
 			return null;
 		}
 	}
+	// validateInput ===============================================================
+
+
 }
+// closes export

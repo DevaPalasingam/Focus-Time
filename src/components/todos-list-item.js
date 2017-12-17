@@ -10,6 +10,7 @@ export default class TodosListItem extends React.Component {
 		};
 	}
 
+	// renderTaskSection - renders the todo list
 	renderTaskSection() {
 		const { task, isCompleted} = this.props;
 
@@ -17,6 +18,7 @@ export default class TodosListItem extends React.Component {
 			cursor: "pointer"
 		};
 
+		// if - this renders the item as an input while it is being edited
 		if (this.state.isEditing) {
 			return(
 				<td>
@@ -26,6 +28,7 @@ export default class TodosListItem extends React.Component {
 				</td>
 			);
 		}
+		// closes if-statement
 
 		return(
 			<td 
@@ -34,7 +37,11 @@ export default class TodosListItem extends React.Component {
 				{task}</td>
 		);
 	}
+	// renderTaskSection ==========================================================
 
+
+
+	// renderActionsSection - this renders the buttons for each item on the list
 	renderActionsSection() {
 		if (this.state.isEditing) {
 			return (
@@ -52,7 +59,11 @@ export default class TodosListItem extends React.Component {
 			</td>	
 		);
 	}
+	// renderActionsSection ===========================================================
 
+
+
+	// render - this actually renders everything
 	render() {
 		return (
 			<tr>
@@ -61,14 +72,21 @@ export default class TodosListItem extends React.Component {
 			</tr>	
 		);
 	}
+	// render ================================================
+
+
 
 	onEditClick() {
 		this.setState({ isEditing: true});
 	}
 
+
+
 	onCancelClick() {
 		this.setState({ isEditing: false});
 	}
+
+
 
 	onSaveClick(event) {
 		event.preventDefault();
@@ -78,4 +96,7 @@ export default class TodosListItem extends React.Component {
 		this.props.saveTask(oldTask, newTask);
 		this.setState({ isEditing: false});
 	}
+
+	
 }
+// closes export

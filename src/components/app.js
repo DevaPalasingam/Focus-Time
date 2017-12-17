@@ -29,22 +29,33 @@ export default class App extends React.Component {
 		);
 	}
 
-
+	// createTask - creates the task that's typed in
 	createTask(task) {
 		this.state.todos.push({
 			task
 		});
 		this.setState({ todos: this.state.todos});
 	}
+	// createTask ==================================================
 
+
+	// saveTask - saves the task after it's been edited
 	saveTask(oldTask, newTask) {
 		const foundTodo =_.find(this.state.todos, todo => todo.task === oldTask);
 		foundTodo.task = newTask;
 		this.setState({todos: this.state.todos});
 	}
+	// saveTask =================================================================
 
+
+
+	// deleteTask =========================================================
 	deleteTask(taskToDelete) {
 		_.remove(this.state.todos, todo => todo.task === taskToDelete);
 		this.setState({ todos: this.state.todos });
 	}
+	// deleteTask ===========================================================
+
+
 }
+// closes export
