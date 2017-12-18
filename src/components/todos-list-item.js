@@ -12,7 +12,10 @@ export default class TodosListItem extends React.Component {
 
 	// renderTaskSection - renders the todo list
 	renderTaskSection() {
-		const { task, isCompleted} = this.props;
+		const { task, time} = this.props;
+
+		console.log("Todo-list-item says task: " + task);
+		console.log("Todo-list-item says time: " + time);
 
 		const taskStyle = {
 			cursor: "pointer"
@@ -35,6 +38,38 @@ export default class TodosListItem extends React.Component {
 				style={taskStyle}
 			>
 				{task}</td>
+		);
+	}
+	// renderTaskSection ==========================================================
+
+	// renderTimeSection - renders the todo list
+	renderTimeSection() {
+		const { task, time} = this.props;
+
+		console.log("Todo-list-item says task: " + task);
+		console.log("Todo-list-item says time: " + time);
+
+		const taskStyle = {
+			cursor: "pointer"
+		};
+
+		// if - this renders the item as an input while it is being edited
+		if (this.state.isEditing) {
+			return(
+				<td>
+					<form onSubmit={this.onSaveClick.bind(this)}>
+						<input type="number" min="1" step="1" defaultValue={time} ref="editTime" />
+					</form>
+				</td>
+			);
+		}
+		// closes if-statement
+
+		return(
+			<td 
+				style={taskStyle}
+			>
+				{time}</td>
 		);
 	}
 	// renderTaskSection ==========================================================
@@ -67,6 +102,7 @@ export default class TodosListItem extends React.Component {
 	render() {
 		return (
 			<tr>
+				{this.renderTimeSection()}
 				{this.renderTaskSection()}
 				{this.renderActionsSection()}
 			</tr>	
@@ -93,7 +129,9 @@ export default class TodosListItem extends React.Component {
 
 		const oldTask = this.props.task;
 		const newTask = this.refs.editInput.value;
-		this.props.saveTask(oldTask, newTask);
+		const oldTime = this.props.time;
+		const newTime = this.refs.editTime.value;
+		this.props.saveTask(oldTask, newTask, oldTime, newTime);
 		this.setState({ isEditing: false});
 	}
 

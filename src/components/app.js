@@ -30,22 +30,30 @@ export default class App extends React.Component {
 	}
 
 	// createTask - creates the task that's typed in
-	createTask(task) {
+	createTask(task, time) {
 		this.state.todos.push({
-			task
+			task,
+			time
 		});
 		this.setState({ todos: this.state.todos});
+
+		console.log("app says task: " + task);
+		console.log("app says time: " + time);
 	}
 	// createTask ==================================================
 
 
+
 	// saveTask - saves the task after it's been edited
-	saveTask(oldTask, newTask) {
+	saveTask(oldTask, newTask, oldTime, newTime) {
 		const foundTodo =_.find(this.state.todos, todo => todo.task === oldTask);
 		foundTodo.task = newTask;
+		foundTodo.time = newTime;
 		this.setState({todos: this.state.todos});
 	}
 	// saveTask =================================================================
+
+
 
 
 

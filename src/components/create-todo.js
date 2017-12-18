@@ -21,6 +21,7 @@ export default class TodosList extends React.Component {
 	render() {
 		return (
 			<form onSubmit={this.handleCreate.bind(this)}>
+				<input type="number" min="1" step="1" placeholder="Minutes" ref="timeInput" />
 				<input type="text" placeholder="What do I need to do?" ref="createInput" />
 				<button>Create</button>
 				{this.renderError()}
@@ -36,6 +37,13 @@ export default class TodosList extends React.Component {
 
 		const createInput = this.refs.createInput;
 		const task = createInput.value;
+		console.log("Task: " + task);
+
+		const timeInput = this.refs.timeInput;
+		const time = timeInput.value;
+		console.log("Time: " + time);
+
+
 		const validateInput = this.validateInput(task); //calls validateInput
 
 		if (validateInput) {
@@ -44,8 +52,11 @@ export default class TodosList extends React.Component {
 		}
 
 		this.setState({ error: null });
-		this.props.createTask(task);
+		this.props.createTask(task,time);
 		this.refs.createInput.value = "";
+
+		// this.props.createTime(time);
+		this.refs.timeInput.value = "";
 	}
 	// =========================================================================
 
