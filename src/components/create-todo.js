@@ -37,11 +37,9 @@ export default class TodosList extends React.Component {
 
 		const createInput = this.refs.createInput;
 		const task = createInput.value;
-		console.log("Task: " + task);
 
 		const timeInput = this.refs.timeInput;
 		const time = timeInput.value;
-		console.log("Time: " + time);
 
 
 		const validateInput = this.validateInput(task); //calls validateInput
@@ -55,7 +53,6 @@ export default class TodosList extends React.Component {
 		this.props.createTask(task,time);
 		this.refs.createInput.value = "";
 
-		// this.props.createTime(time);
 		this.refs.timeInput.value = "";
 	}
 	// =========================================================================

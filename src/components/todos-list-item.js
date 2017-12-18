@@ -14,8 +14,6 @@ export default class TodosListItem extends React.Component {
 	renderTaskSection() {
 		const { task, time} = this.props;
 
-		console.log("Todo-list-item says task: " + task);
-		console.log("Todo-list-item says time: " + time);
 
 		const taskStyle = {
 			cursor: "pointer"
@@ -46,8 +44,6 @@ export default class TodosListItem extends React.Component {
 	renderTimeSection() {
 		const { task, time} = this.props;
 
-		console.log("Todo-list-item says task: " + task);
-		console.log("Todo-list-item says time: " + time);
 
 		const taskStyle = {
 			cursor: "pointer"

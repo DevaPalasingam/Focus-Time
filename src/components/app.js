@@ -18,6 +18,14 @@ export default class App extends React.Component {
 		return (
 			<div>
 				<h1>React ToDos App</h1>
+				<div id="topButtons">
+			        <button id="minus5">-5m</button>
+			        <button id="plus5">+5m</button>
+			    </div>
+				<div id="display">00:00</div>
+				<div id="bottomButton">
+			        <button id="completed">Completed</button>
+			    </div>
 				<CreateTodo todos={this.state.todos} createTask={this.createTask.bind(this)} />
 				<TodosList 
 					todos={this.state.todos}
@@ -36,9 +44,6 @@ export default class App extends React.Component {
 			time
 		});
 		this.setState({ todos: this.state.todos});
-
-		console.log("app says task: " + task);
-		console.log("app says time: " + time);
 	}
 	// createTask ==================================================
 

@@ -14,7 +14,7 @@ export default class TodosList extends React.Component {
 		return (
 			<table>
 				<TodosListHeader />
-				<tbody>
+				<tbody id="itemListTag">
 					{this.renderItems()}
 				</tbody>
 			</table>
