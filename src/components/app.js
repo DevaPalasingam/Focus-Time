@@ -2,8 +2,11 @@ import _ from "lodash";
 import React, { Component } from "react";
 import CreateTodo from "./create-todo";
 import TodosList from "./todos-list";
+import Timer from "./timer/timer";
 
 const todos = [];
+
+	
 
 export default class App extends React.Component {
 	constructor (props) {
@@ -18,14 +21,7 @@ export default class App extends React.Component {
 		return (
 			<div>
 				<h1>React ToDos App</h1>
-				<div id="topButtons">
-			        <button id="minus5">-5m</button>
-			        <button id="plus5">+5m</button>
-			    </div>
-				<div id="display">00:00</div>
-				<div id="bottomButton">
-			        <button id="completed">Completed</button>
-			    </div>
+				<Timer/>
 				<CreateTodo todos={this.state.todos} createTask={this.createTask.bind(this)} />
 				<TodosList 
 					todos={this.state.todos}
